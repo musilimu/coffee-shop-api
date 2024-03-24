@@ -1,27 +1,28 @@
 package cafe.camellia.api.user;
 
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import lombok.AllArgsConstructor;
+import org.springframework.web.bind.annotation.*;
 
+import java.util.HashMap;
+
+@AllArgsConstructor
 @RestController
 @RequestMapping("/api/v1/auth")
 public class UserController implements UserInterface{
+    private final UserService userService;
     @PostMapping("/register")
     @Override
-    public User createUser(User user) {
-        return null;
+    public User createUser(@RequestBody User user) {
+        return userService.createUser(user);
     }
-    @PutMapping("/{id}")
+    @PutMapping("/users/{id}")
     @Override
-    public User updateUser(User user) {
-        return null;
+    public User updateUser(@PathVariable String id, @RequestBody User user) {
+        return userService.updateUser(id, user);
     }
-
     @PostMapping("/login")
     @Override
-    public String loginUser(String email, String password) {
-        return null;
+    public String loginUser(@RequestBody User emailPassword) {
+        return userService.loginUser(emailPassword);
     }
 }
