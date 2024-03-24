@@ -1,0 +1,10 @@
+version: '3.4'
+
+services:
+  database:
+    image: mongo
+    ports:
+      - '27017-27019:27017-27019'
+#    environment:
+#      - MONGI_INITDB_ROOT_USERNAME=uwi
+#      - MONGI_INITDB_ROOT_PASSWORD=uwi123
